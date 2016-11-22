@@ -1,8 +1,9 @@
-name: spec-kemal
+name: spec-kemalyst
 version: 0.2.0
 
 authors:
   - Sdogruyol <dogruyolserdar@gmail.com>
+  - drujensen <drujensen@gmail.com>
 
 license: MIT
 
