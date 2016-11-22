@@ -1,7 +1,5 @@
 require "spec"
-require "kemal"
-
-Kemal.config.logging = false
+require "kemalyst"
 
 class Global
   @@response : HTTP::Client::Response?
@@ -34,9 +32,10 @@ def process_request(request)
 end
 
 def build_main_handler
-  main_handler = Kemal.config.handlers.first
+  Kemalyst::Application.instance.setup_handlers
+  main_handler = Kemalyst::Application.instance.handlers.first
   current_handler = main_handler
-  Kemal.config.handlers.each_with_index do |handler, index|
+  Kemalyst::Application.instance.handlers.each_with_index do |handler, index|
     current_handler.next = handler
     current_handler = handler
   end

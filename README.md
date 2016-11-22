@@ -1,22 +1,20 @@
-# spec-kemal
+# spec-kemalyst
 
-Kemal helpers to Crystal's `spec` for easy testing.
+Kemalyst helpers to Crystal's `spec` forked from spec-kemal.
 
 ## Installation
 
 Add it to your `shard.yml`.
 
 ```yaml
-name: your-kemal-app
+name: your-kemalyst-app
 version: 0.1.0
 
 dependencies:
-  spec-kemal:
-    github: sdogruyol/spec-kemal
-    branch: master
-  kemal:
-    github: sdogruyol/kemal
-    branch: master
+  spec-kemalyst:
+    github: drujensen/spec-kemalyst
+  kemalyst:
+    github: drujensen/kemalyst
 ```
 
 ## Usage
@@ -24,34 +22,13 @@ dependencies:
 Just require it before your files in your `spec/spec_helper.cr`
 
 ```crystal
-require "spec-kemal"
-require "../src/your-kemal-app"
-```
-
-Your Kemal application
-
-```crystal
-# src/your-kemal-app.cr
-
-require "kemal"
-
-get "/" do
-  "Hello World!"
-end
-
-Kemal.run
-```
-
-Now you can easily test your `Kemal` application in your `spec`s.
-
-```
-KEMAL_ENV=test crystal spec
+require "spec-kemalyst"
 ```
 
 ```crystal
-# spec/your-kemal-app-spec.cr
+# spec/controllers/your-controller_spec.cr
 
-describe "Your::Kemal::App" do
+describe "Your::Controller" do
 
   # You can use get,post,put,patch,delete to call the corresponding route.
   it "renders /" do
@@ -62,9 +39,11 @@ describe "Your::Kemal::App" do
 end
 ```
 
+This is a fork from spec-kemal and modified to work with kemalyst.
+
 ## Contributing
 
-1. Fork it ( https://github.com/sdogruyol/spec-kemal/fork )
+1. Fork it ( https://github.com/drujensen/spec-kemalyst/fork )
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
@@ -73,3 +52,4 @@ end
 ## Contributors
 
 - [sdogruyol](https://github.com/sdogruyol) Sdogruyol - creator, maintainer
+- [drujensen](https://github.com/drujensen) drujensen - modified
