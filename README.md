@@ -1,4 +1,4 @@
-# spec-kemalyst
+# kemalyst-spec
 
 Kemalyst helpers to Crystal's `spec` forked from spec-kemal.
 
@@ -11,10 +11,10 @@ name: your-kemalyst-app
 version: 0.1.0
 
 dependencies:
-  spec-kemalyst:
-    github: drujensen/spec-kemalyst
   kemalyst:
     github: drujensen/kemalyst
+  kemalyst-spec:
+    github: drujensen/kemalyst-spec
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ dependencies:
 Just require it before your files in your `spec/spec_helper.cr`
 
 ```crystal
-require "spec-kemalyst"
+require "kemalyst-spec"
 ```
 
 ```crystal

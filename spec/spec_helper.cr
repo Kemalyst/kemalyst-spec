@@ -1,3 +1,3 @@
 require "spec"
-require "kemal"
-require "../src/spec-kemal"
+require "kemalyst"
+require "../src/kemalyst-spec"
