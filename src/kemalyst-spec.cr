@@ -12,9 +12,10 @@ class Global
   end
 end
 
-{% for method in %w(get post put head delete patch) %}
+{% for method in %w(get head post put patch delete) %}
   def {{method.id}}(path, headers : HTTP::Headers? = nil, body : String? = nil)
     request = HTTP::Request.new("{{method.id}}".upcase, path, headers, body )
+    request.headers["Content-Type"] = Kemalyst::Handler::Params::URL_ENCODED_FORM
     Global.response = process_request request
   end
 {% end %}
@@ -23,6 +24,8 @@ def process_request(request)
   io = IO::Memory.new
   response = HTTP::Server::Response.new(io)
   context = HTTP::Server::Context.new(request, response)
+  csrf = Kemalyst::Handler::CSRF.instance
+  request.headers[csrf.header_key] = csrf.token(context)
   main_handler = build_main_handler
   main_handler.call context
   response.close
